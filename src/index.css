@@ -1,0 +1,177 @@
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/open-sans-v40-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/open-sans-v40-latin-700.woff2") format("woff2");
+}
+
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./assets/fonts/raleway-v34-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/fonts/raleway-v34-latin-700.woff2") format("woff2");
+}
+
+@import "tailwindcss";
+
+@theme {
+
+  --color-intro: hsl(217, 28%, 15%);
+  --color-main: hsl(218, 28%, 13%);
+  --color-footer: hsl(216, 53%, 9%);
+  --color-testimonial: hsl(219, 30%, 18%);
+  --color-facebook: hsl(221, 44.30%, 41.60%);
+  --color-twitter: hsl(0, 0%, 4.51%);
+
+  --font-sans: "Open Sans", sans-serif;
+  --font-raleway: "Raleway", sans-serif;
+
+  --leading-text: 1.875rem;
+
+  --spacing-desktop: 84rem;
+  --spacing-mobile: 3.6875rem;
+  --spacing-header: 4.625rem;
+  --spacing-hero: 1.875rem;
+  --spacing-line: 0.1875rem;
+  --spacing-newsletter: 53.9375rem;
+  --spacing-button: 13.5625rem;
+  --spacing-paragraph: 54ch;
+  --spacing-title: 35ch;
+  --spacing-features: 59rem;
+  --spacing-list: 4.5rem;
+  --spacing-productivity: 8.4375rem;
+  --spacing-productive: 81.1875rem;
+  --spacing-footerNav: 7.25rem;
+
+}
+
+*:focus-visible {
+  outline: 2px dotted hsl(198, 60%, 50%);
+  outline-offset: 5px;
+}
+
+@layer utilities {
+  .flex-flow {
+    flex-flow: column wrap;
+
+    @media (width >=48em) {
+      flex-flow: row wrap;
+      justify-content: space-between;
+    }
+  }
+
+}
+
+@layer components {
+  .button {
+    @apply bg-gradient-to-r from-teal-900 via-cyan-800 to-blue-900 rounded-full cursor-pointer py-3 px-6 font-bold transition duration-300 ease-in-out motion-reduce:transition-none
+  }
+}
+
+@media (hover: hover) {
+  .button:hover {
+    @apply from-blue-900 via-cyan-800 to-teal-900
+  }
+}
+
+.link {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: hsl(0, 0%, 100%);
+    bottom: -0.5rem;
+    left: 0;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before {
+      transition: none;
+    }
+  }
+}
+
+
+@media (hover: hover) {
+  .link:hover::before {
+    transform-origin: right;
+    transform: scaleX(1);
+  }
+}
+
+.curve-image::before {
+  content: "";
+  background-image: url("./assets/images/bg-curvy-mobile.svg");
+  position: absolute;
+  background-position: bottom center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 8.875rem;
+  z-index: -1;
+  top: -8.875rem;
+
+  @media (width >=64em) {
+    background-image: url("./assets/images/bg-curvy-desktop.svg");
+    height: 28rem;
+    top: -26rem;
+  }
+}
+
+
+.text::before {
+  content: url("./assets/images/icon-location.svg");
+  margin-inline-end: 0.5rem;
+}
+
+.phone::before {
+  content: url("./assets/images/icon-phone.svg");
+  margin-inline-end: 0.5rem;
+}
+
+.email::before {
+  content: url("./assets/images/icon-email.svg");
+  margin-inline-end: 0.5rem;
+}
+
+.instagram:hover {
+  background: linear-gradient(-45deg,
+      #feda75,
+      #fa7e1e,
+      #d62976,
+      #962fbf,
+      #4f5bd5);
+  border: none;
+}
+
+@media (hover: hover) {
+  .footer__link:hover {
+    @apply text-teal-600
+  }
+}
